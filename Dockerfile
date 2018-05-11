@@ -1,7 +1,7 @@
 FROM java:8
 MAINTAINER Jan Schulte <jan@janschulte.com>
 
-ENV TRIFECTA_VERSION=0.21.3 TRIFECTA_URL=https://github.com/ldaniels528/trifecta/releases/download
+ENV TRIFECTA_VERSION=0.22.0rc8-0.10.1.0 TRIFECTA_FILENAME_VERSION=0.22.0rc8b-0.10.1.0 TRIFECTA_URL=https://github.com/ldaniels528/trifecta/releases/download
 
 RUN useradd -r -m trifecta
 
@@ -9,10 +9,10 @@ USER trifecta
 
 WORKDIR /home/trifecta
 
-RUN wget $TRIFECTA_URL/v$TRIFECTA_VERSION/trifecta_ui-$TRIFECTA_VERSION.zip && \
-	unzip trifecta_ui-$TRIFECTA_VERSION.zip  && \
-	rm trifecta_ui-$TRIFECTA_VERSION.zip && \
-	ln -s trifecta_ui-$TRIFECTA_VERSION trifecta_ui && \
+RUN wget $TRIFECTA_URL/v$TRIFECTA_VERSION/trifecta-ui-$TRIFECTA_FILENAME_VERSION.zip && \
+	unzip trifecta-ui-$TRIFECTA_FILENAME_VERSION.zip  && \
+	rm trifecta-ui-$TRIFECTA_FILENAME_VERSION.zip && \
+	ln -s trifecta-ui-$TRIFECTA_FILENAME_VERSION trifecta-ui && \
 	mkdir /home/trifecta/.trifecta
 
 COPY entrypoint.sh /home/trifecta/
